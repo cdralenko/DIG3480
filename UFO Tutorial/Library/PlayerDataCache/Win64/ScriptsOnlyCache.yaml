@@ -6,8 +6,6 @@ ScriptsOnlyBuild:
     - PlayerController
     - Quitter
     - Rotator
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -39,25 +37,25 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9322}
+      Script: {instanceID: 9292}
     - Class: 114
-      Script: {instanceID: 9328}
+      Script: {instanceID: 9324}
     - Class: 114
-      Script: {instanceID: 9334}
+      Script: {instanceID: 9330}
     - Class: 114
-      Script: {instanceID: 9378}
+      Script: {instanceID: 9336}
     - Class: 114
       Script: {instanceID: 9380}
     - Class: 114
-      Script: {instanceID: 9638}
+      Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9518}
     - Class: 114
-      Script: {instanceID: 10478}
+      Script: {instanceID: 9642}
     - Class: 114
-      Script: {instanceID: 11538}
+      Script: {instanceID: 9708}
     - Class: 114
-      Script: {instanceID: 16552}
+      Script: {instanceID: 10482}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -111,6 +109,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: e08dc097b830ae769e9cdd9b04e903ac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoxMover
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -504,6 +508,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Quitter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalAsset
@@ -729,20 +739,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: e08dc097b830ae769e9cdd9b04e903ac
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BoxMover
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Quitter
   platform: 19
   scenePathNames:
   - Assets/Scenes/UFO Challenge.unity
-  playerPath: C:/Users/stark/Desktop/UCF/2019 Fall (THAT'S NOW)/DIG3480/DIG3480 GitHub/UFO
-    Tutorial/Builds/UFO Tutorial.exe
+  playerPath: C:/Users/stark/Desktop/UCF/2019 Fall (THAT'S NOW)/DIG3480/Unity Projects
+    Backup/UFO Tutorial/Builds/UFO Tutorial.exe
