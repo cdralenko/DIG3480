@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public Text countText;
     public Text winText;
+    public Text livesText;
 
     private Rigidbody2D rb2d;
     private int count;
+    private int lives;
 
     private void Start()
     {
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour {
         count = 0;
         winText.text = "";
         SetCountText();
+        lives = 3;
+        SetLivesText();
     }
 
     private void FixedUpdate()
@@ -26,8 +30,6 @@ public class PlayerController : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rb2d.AddForce(movement * speed);
-        if (Input.GetKey("escape"))
-            Application.Quit();
     }
 
     
@@ -39,16 +41,39 @@ public class PlayerController : MonoBehaviour {
                 count = count + 1;
                 SetCountText();
             }
+
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.gameObject.SetActive(false);
+                lives = lives - 1;
+                SetLivesText();
+            }
+
+            if (count == 12)
+            {
+                transform.position = new Vector2(0f, -50f);
+            }
               
         
     }
 
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        countText.text = "Score: " + count.ToString();
+        if (count >= 20)
         {
-            winText.text = "You win! Game created by Ainslee Flowers!";
+            winText.text = "WINNER! Game created by Ainslee Flowers!";
+            Destroy(gameObject);
+        }
+    }
+
+    void SetLivesText()
+    {
+        livesText.text = "Lives: " + lives.ToString();
+        if (lives == 0)
+        {
+            winText.text = "You lose!";
+            Destroy(gameObject);
         }
     }
 }
