@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject hazard;
+    public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait;
@@ -16,9 +16,11 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
+    public Text winText;
 
     private bool gameOver;
     private bool restart;
+    private bool winner;
 
     private int score;
 
@@ -26,8 +28,10 @@ public class GameController : MonoBehaviour
     {
         gameOver = false;
         restart = false;
+        winner = false;
         restartText.text = "";
         gameOverText.text = "";
+        winText.text = "";
         score = 0;
         UpdateScore();
         StartCoroutine(SpawnWaves());
@@ -37,16 +41,23 @@ public class GameController : MonoBehaviour
     {
         if (restart)
         {
-            if (Input.GetKeyDown (KeyCode.R))
+            if (Input.GetKeyDown (KeyCode.Space))
             {
                 SceneManager.LoadScene("Main");
             }
         }
-
+    
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+
+        if (score >= 100)
+        {
+            winText.text = "WINNER! Game created by Ainslee Flowers";
+            winner = true;
+        }
+
     }
 
     IEnumerator SpawnWaves()
@@ -56,6 +67,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(startWait);
             for (int i = 0; i < hazardCount; i++)
             {
+                GameObject hazard = hazards[Random.Range (0,hazards.Length)];
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
@@ -65,8 +77,13 @@ public class GameController : MonoBehaviour
 
             if (gameOver)
             {
-                restartText.text = "Press 'R' to Restart";
+                restartText.text = "Press SPACE to Restart";
                 restart = true;
+                break;
+            }
+
+            if (winner)
+            {
                 break;
             }
         }
@@ -80,7 +97,7 @@ public class GameController : MonoBehaviour
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Points: " + score;
     }
 
     public void GameOver()
@@ -88,4 +105,5 @@ public class GameController : MonoBehaviour
         gameOverText.text = "GAME OVER!";
         gameOver = true;
     }
+
 }
